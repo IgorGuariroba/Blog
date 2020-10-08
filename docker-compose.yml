@@ -1,0 +1,60 @@
+version: "3.7"
+services:
+
+  app:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+    networks:
+      - mysql-compose-network
+    depends_on:
+      - mysql_db_container
+    volumes: 
+      - .:/usr/app ## monitoro a pasta atual . e envio as alterações para /usr/app
+    command: npm start
+    
+    
+  mysql_db_container:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: blog
+      MYSQL_USER: igor
+      MYSQL_PASSWORD: 123456
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_db_data_container:/var/lib/mysql
+    networks:
+      - mysql-compose-network
+
+
+  phpmyadmin:
+    image: phpmyadmin:latest
+    restart: always
+    environment:
+      PMA_ARBITRARY: 1
+      PMA_HOST: mysql_db_container
+      PMA_PORT: 3306
+      PMA_USE: igor
+      PMA_PASSWORD: 123456
+    ports:
+      - 8080:80
+    networks:
+      - mysql-compose-network
+    depends_on:
+      - mysql_db_container
+    volumes: 
+      - /sessions
+      - /docker/phpmyadmin/config.user.inc.php:/etc/phpmyadmin/config.user.inc.php
+      - /custom/phpmyadmin/theme/:/www/themes/theme/
+
+
+networks:
+  mysql-compose-network:
+
+volumes: 
+  mysql_db_data_container:
