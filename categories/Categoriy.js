@@ -18,4 +18,12 @@ const Category = connection.define('categories',{
     }
 })
 
+// /**
+//  *  ATUALIZANDO O BANCO PARA CRIAR OS RELACIONAMENTOS
+//  *  Esse comando deve ser comentado apos ter sido executado
+//  */
+// Category.sync({
+//     force:true
+// });
+
 module.exports = Category;

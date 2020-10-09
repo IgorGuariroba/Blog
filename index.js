@@ -4,7 +4,8 @@ const bodyParser           = require("body-parser");// Importando o bodyParser
 const connection           = require("./database/database"); // Carregando nossa conexão com o banco de dados
 const categoriesController = require("./categories/CategoriesController");// Carregando as rotas de categorias
 const articlesController   = require("./articles/ArticlesController");// Carregando as rotas de articles
-
+const Article              = require("./articles/Aticle");// Carregando o model da tabela atigos
+const Category             = require("./categories/Categoriy");// Carregando o model da tabela categories
 
 /**
  * VIEW ENGINE EJS
