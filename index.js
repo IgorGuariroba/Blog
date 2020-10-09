@@ -1,13 +1,25 @@
-const express = require("express"); // Importando o express
-const app = express(); // Iniciando o express
-const bodyParser = require("body-parser");//importando o bodyParser
-const connection = require('./database/database'); // carregando nossa conexão com o banco de dados
-// const Pergunta = require("./database/Pergunta");
-// const Resposta = require("./database/Resposta");
+const express              = require("express"); // Importando o express
+const app                  = express(); // Iniciando o express
+const bodyParser           = require("body-parser");// Importando o bodyParser
+const connection           = require("./database/database"); // Carregando nossa conexão com o banco de dados
+const categoriesController = require("./categories/categoriesController");// Carregando as rotas de categorias
+const articlesController   = require("./articles/articlesController");// Carregando as rotas de articles
 
 
-app.set('view engine','ejs');//gerador de marcação HTML com JavaScript simples. é necessario criar a  pasta views 
-app.use(express.static('public'));//Entrega arquivos estáticos como imagens, arquivos CSS, e arquivos JavaScript
+/*
+    VIEW ENGINE EJS
+    gerador de marcação HTML com JavaScript simples. 
+    É necessario criar a  pasta views 
+ */
+app.set('view engine','ejs');
+
+
+/*
+    MODULE STATICO EXPRESS
+    Entrega arquivos estáticos como imagens
+    ,arquivos CSS, e arquivos JavaScript
+ */
+app.use(express.static('public'));
 
 /*  
     BODYPARSER
@@ -30,6 +42,21 @@ connection
     .catch((error) => {
         console.log(error);
     })
+
+
+/**
+ *  CATEGORIAS ROTAS
+ *  Carregamos as rotas de categorias e estamos passando 
+ *  Através da variavel categoriesController
+ */
+app.use("/",categoriesController);
+
+/**
+ *  ARTICLES ROTAS
+ *  Carregamos as rotas de articles e estamos passando 
+ *  Através da variavel articlesController
+ */
+app.use("/",articlesController);
 
 
 
