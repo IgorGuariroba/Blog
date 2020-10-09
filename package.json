@@ -4,7 +4,6 @@
   "description": "blog com ferramenta de edição e area de adiminstração do site ",
   "main": "index.js",
   "scripts": {
-    "test": "npm test",
     "start": "nodemon index.js"
   },
   "repository": {
