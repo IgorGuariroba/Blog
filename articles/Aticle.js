@@ -37,12 +37,14 @@ Category.hasMany(Article);
  */
 Article.belongsTo(Category);
 
-// /**
-//  *  ATUALIZANDO O BANCO PARA CRIAR OS RELACIONAMENTOS
-//  *  Este comando deve ser comentado apos ser executado
-//  */
-// Article.sync({
-//     force:true
-// });
+/**
+ *  ATUALIZANDO O BANCO PARA CRIAR OS RELACIONAMENTOS
+ *  Este comando deve ser comentado apos ser executado
+ * 
+ * Article.sync({
+ *   force:true
+ * });
+ */
+
 
 module.exports = Article;
