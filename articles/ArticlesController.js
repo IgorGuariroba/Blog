@@ -9,7 +9,7 @@ router.get("/articles", (req, res) => {
 });
 
 router.get("/admin/articles/new", (req, res) => {
-    res.send("ROTA PARA CRIAR NOVAS ATIGOS")
+    res.render("admin/articles/new");
 });
 
 
