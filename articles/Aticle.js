@@ -1,6 +1,6 @@
 const Sequelize    = require("sequelize");
 const connection   = require("../database/database");
-const Category     = require("../categories/Categoriy"); // Importando o model de categoria para criar o relacionamento
+const Category     = require("../categories/Category"); // Importando o model de categoria para criar o relacionamento
 
 /**
  *  TABELA ARTICLES
