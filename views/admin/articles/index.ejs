@@ -8,15 +8,23 @@
     <table class="table table-bordered">
         <thead>
             <tr>
-                <th>ID</th>
+                <th>Id</th>
                 <th>Titulo</th>
                 <th>Slug</th>
-                <th>Category</th>
+                <th>Categoria</th>
                 <th>Ações</th>
             </tr>
         </thead>
         <tbody>
-        
+            <% articles.forEach(article => { %>
+            <tr>
+                <td><%= article.id %></td>
+                <td><%= article.title %></td>
+                <td><%= article.slug %></td>
+                <td><%= article.categoryId %></td>
+                <td></td>
+            </tr>
+            <% }) %>
         </tbody>
     </table>
 </div>
