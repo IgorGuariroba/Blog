@@ -12,7 +12,8 @@ const Sequelize = require("sequelize"); //Mapeamento relacional para conexões d
  */
 const connection = new Sequelize('blog','igor','123456',{
     host:       'mysql_db_container',
-    dialect:    'mysql'
+    dialect:    'mysql',
+    timezone: "-03:00"
 });
 
 // Primitir que a conexão possa ser usada em qualquer lugar que ela for importada!

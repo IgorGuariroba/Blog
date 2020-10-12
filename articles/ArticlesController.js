@@ -1,10 +1,12 @@
 const express  = require("express");// Importando o express para controlar as rotas referente a categorias
 const router   = express.Router();// Instacia do express router para fazer o controle fora da minha variavel app
 const Category = require("../categories/Category");
+const slugify  = require("slugify");
+const Article  = require("./Aticle");
 
 
 
-router.get("/articles", (req, res) => {
+router.get("/admin/articles", (req, res) => {
     res.send("ROTA DE  ARTIGOS")
 });
 
@@ -15,6 +17,20 @@ router.get("/admin/articles/new", (req, res) => {
     });
 });
 
+router.post("/articles/save", (req, res) => {
+    var title    = req.body.title;
+    var body     = req.body.body;
+    var category = req .body.category;
+
+    Article.create({
+        title:      title,
+        slug:       slugify(title),
+        body:       body,
+        categoryId: category
+    }).then(() =>{
+        res.redirect("/admin/articles");
+    });
+});
 
 
 module.exports = router;
