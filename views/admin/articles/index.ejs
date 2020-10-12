@@ -22,7 +22,13 @@
                 <td><%= article.title %></td>
                 <td><%= article.slug %></td>
                 <td><%= article.category.title %></td>
-                <td></td>
+                <td>
+                    <a href="/admin/articles/edit/<%= article.id %>" class="btn btn-warning">Editar</a>
+                        <form method="POST" action="/articles/delete" style="display: inline;" onsubmit="confirmDelect(event, this)">
+                            <input type="hidden" name="id" value="<%= article.id %>">
+                            <button class="btn btn-danger">Deletar</button>
+                        </form>
+                </td>
             </tr>
             <% }) %>
         </tbody>
@@ -32,7 +38,7 @@
 <script>
     function confirmDelect(event, form){
         event.preventDefault();
-        var decision = confirm("Você quer deletar essa categoria?");
+        var decision = confirm("Você quer deletar esse artigo?");
         if(decision){
             form.submit();
         }
