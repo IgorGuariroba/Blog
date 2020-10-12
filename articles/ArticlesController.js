@@ -7,7 +7,7 @@ const Article  = require("./Aticle");
 
 
 router.get("/admin/articles", (req, res) => {
-    res.send("ROTA DE  ARTIGOS")
+    res.render("admin/articles/index")
 });
 
 
