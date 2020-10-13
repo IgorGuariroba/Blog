@@ -70,6 +70,24 @@ app.use("/",articlesController);
     });
  });
 
+ app.get("/:slug",(req, res) =>{
+    var slug = req.params.slug;
+
+    Article.findOne({
+        where:{
+            slug: slug
+        }
+    }).then(article => {
+        if(article != undefined){
+            res.render("article", {article: article});
+        }else{
+            res.redirect("/");
+        }
+    }).catch(erro => {
+        res.redirect("/");
+    });
+ });
+
 
  app.listen(80,() =>{
      console.log("O servidor está rodando")
