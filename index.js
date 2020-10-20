@@ -4,8 +4,10 @@ const bodyParser           = require("body-parser");// Importando o bodyParser
 const connection           = require("./database/database"); // Carregando nossa conexão com o banco de dados
 const categoriesController = require("./categories/CategoriesController");// Carregando as rotas de categorias
 const articlesController   = require("./articles/ArticlesController");// Carregando as rotas de articles
+const usersController      = require("./users/UsersController");
 const Article              = require("./articles/Aticle");// Carregando o model da tabela atigos
 const Category             = require("./categories/Category");// Carregando o model da tabela categories
+const User                 = require("./users/Users");// Carregando o model da tabela categories
 
 /**
  * VIEW ENGINE EJS
@@ -59,6 +61,12 @@ app.use("/",categoriesController);
  */
 app.use("/",articlesController);
 
+/**
+ *  Users ROTAS
+ *  Carregamos as rotas de users e estamos passando 
+ *  Através da variavel UsersController
+ */
+app.use("/",usersController);
 
 
 
