@@ -1,6 +1,7 @@
 const express              = require("express"); // Importando o express
 const app                  = express(); // Iniciando o express
 const bodyParser           = require("body-parser");// Importando o bodyParser
+const session           = require("express-session");// Importando o express-session
 const connection           = require("./database/database"); // Carregando nossa conexão com o banco de dados
 const categoriesController = require("./categories/CategoriesController");// Carregando as rotas de categorias
 const articlesController   = require("./articles/ArticlesController");// Carregando as rotas de articles
@@ -16,6 +17,16 @@ const User                 = require("./users/Users");// Carregando o model da t
  */
 app.set('view engine','ejs');
 
+/**
+ * SESSION
+ * session da aplicação. 
+ */
+app.use(session({
+    secret: "A@do3fi7g4",
+    cookie:{
+        maxAge: 60000
+    }
+}));
 
 /**
  * MODULE STATICO EXPRESS
