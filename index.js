@@ -24,7 +24,7 @@ app.set('view engine','ejs');
 app.use(session({
     secret: "A@do3fi7g4",
     cookie:{
-        maxAge: 60000
+        maxAge: 600000
     }
 }));
 
