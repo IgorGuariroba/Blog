@@ -2,6 +2,7 @@
     <a class="navbar-brand" href="/">
         <img src="/img/blackboardlogo.png" alt="Icon de guia">
     </a>
+    
     <ul class="navbar-nav mr-auto">
 
       <% categories.forEach(category => {%>
@@ -9,5 +10,9 @@
           <a class="nav-link" href="/category/<%= category.slug %>"><%= category.title %></a>
       </li>
       <% }) %>
+
+      <li class="nav-item">
+        <a class="nav-link active" href="/login">login</a>
+      </li>
     </ul>
 </nav>
